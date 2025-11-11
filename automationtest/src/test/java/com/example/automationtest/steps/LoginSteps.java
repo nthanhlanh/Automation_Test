@@ -3,7 +3,8 @@ package com.example.automationtest.steps;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.Assert;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginSteps {
 
@@ -26,7 +27,7 @@ public class LoginSteps {
     @Then("user should see the dashboard")
     public void user_should_see_the_dashboard() {
         String currentUrl = driver.getCurrentUrl();
-        Assert.assertTrue("User is not on dashboard", currentUrl.contains("inventory"));
+        assertTrue(currentUrl.contains("inventory"), "User is not on dashboard");
         driver.quit();
     }
 }
