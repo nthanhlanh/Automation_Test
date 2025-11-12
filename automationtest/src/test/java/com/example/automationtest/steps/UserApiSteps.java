@@ -1,31 +1,27 @@
 package com.example.automationtest.steps;
 
+import com.example.automationtest.api.UserApi;
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
 
-import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class UserApiSteps {
 
+    private UserApi userApi;
     private Response response;
-    private final String BASE_URL = "http://localhost:8089";
 
     @Given("the user API is running")
     public void theUserApiIsRunning() {
-        // Bạn có thể ping server hoặc chỉ cần log
-        System.out.println("Checking if API is running on " + BASE_URL);
+        userApi = new UserApi();
+        System.out.println("Checking if API is running");
+        // có thể thêm ping hoặc health-check endpoint
     }
 
     @When("I send a GET request to {string}")
     public void iSendAGETRequestTo(String endpoint) {
-        response = given()
-                        .when()
-                        .get(BASE_URL + endpoint)
-                        .then()
-                        .extract()
-                        .response();
+        response = userApi.getUsers(endpoint);
     }
 
     @Then("the response status should be {int}")
