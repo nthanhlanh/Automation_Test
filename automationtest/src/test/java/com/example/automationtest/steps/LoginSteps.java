@@ -1,5 +1,6 @@
 package com.example.automationtest.steps;
 
+import com.example.automationtest.models.User;
 import com.example.automationtest.pages.LoginPage;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
@@ -22,10 +23,9 @@ public class LoginSteps {
         loginPage = new LoginPage(driver);
     }
 
-    @When("user enters valid credentials")
-    public void user_enters_valid_credentials() {
-        // Gọi method login của Page Object
-        loginPage.login("standard_user", "secret_sauce");
+    @When("user logs in with user {user}")
+    public void user_logs_in_with_user(User user) {
+        loginPage.login(user.getUsername(), user.getPassword());
     }
 
     @Then("user should see the dashboard")
