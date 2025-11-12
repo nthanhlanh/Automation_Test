@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: automationtest
+
+server:
+  port: 8089
