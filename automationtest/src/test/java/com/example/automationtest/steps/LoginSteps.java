@@ -4,8 +4,6 @@ import com.example.automationtest.models.User;
 import com.example.automationtest.pages.LoginPage;
 import com.example.automationtest.support.TestContext;
 import io.cucumber.java.en.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
