@@ -2,10 +2,10 @@
 Feature: Login to Jira feature
 
   Scenario: User logs in successfully
-    Given the user is on the login page
-    When user enters username "lanh.nguyen@evizi.com"
-    And the user clicks Continue
-    And the user enters password "ABC@1991"
-    And the user clicks Login
-    Then the "For you" title is displayed on the dashboard
+    Given The user is on the login page
+    When The user enters username "lanh.nguyen@evizi.com"
+    And The user clicks Continue
+    And The user enters password "ABC@1991"
+    And The user clicks Login
+    Then "For you" title is displayed
 

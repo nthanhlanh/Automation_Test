@@ -2,6 +2,7 @@ package com.example.java_automation_framework.steps;
 
 import com.example.java_automation_framework.pages.LoginPage;
 import com.example.java_automation_framework.support.Context;
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,40 +13,40 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class LoginSteps {
 
     private final Context context;
+    private LoginPage loginPage;
 
     public LoginSteps(Context context) {
         this.context = context;
     }
 
-    @Given("the user is on the login page")
+    @Given("The user is on the login page")
     public void the_user_is_on_the_login_page() {
-        context.setLoginPage(new LoginPage(context.getDriver()));
+        loginPage = new LoginPage(context.getDriver());
     }
 
-    @When("user enters username {string}")
-    public void user_enters_username(String userName) {
-        context.getLoginPage().enterUsername(userName);
+    @When("The user enters username {string}")
+    public void the_user_enters_username(String userName) {
+        loginPage.enterUsername(userName);
     }
 
-    @And("the user clicks Continue")
+    @And("The user clicks Continue")
     public void the_user_clicks_continue() {
-        context.getLoginPage().clickContinue();
+        loginPage.clickContinue();
     }
 
-    @And("the user enters password {string}")
+    @And("The user enters password {string}")
     public void the_user_enters_password(String password) {
-        context.getLoginPage().enterPassword(password);
+        loginPage.enterPassword(password);
     }
 
-    @And("the user clicks Login")
+    @And("The user clicks Login")
     public void the_user_clicks_login() {
-        context.getLoginPage().clickLogin();
+        loginPage.clickLogin();
     }
 
-    @Then("the {string} title is displayed on the dashboard")
-    public void the_title_is_displayed_on_the_dashboard(String expectedTitle) {
-        String actualTitle = context.getLoginPage().getTitleText();
+    @Then("{string} title is displayed")
+    public void title_is_displayed(String expectedTitle) {
+        String actualTitle = loginPage.getTitleText();
         assertEquals(actualTitle, expectedTitle);
-        context.getDriver().quit();
     }
 }

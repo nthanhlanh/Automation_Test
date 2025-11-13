@@ -22,17 +22,17 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    private WebElement waitForElement(By locator) {
-        return new WebDriverWait(driver, Duration.ofSeconds(4))
+    private WebElement waitForElement(By locator, int timeoutInSeconds) {
+        return new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void enterUsername(String username) {
-        waitForElement(usernameField).sendKeys(username);
+        waitForElement(usernameField,4).sendKeys(username);
     }
 
     public void enterPassword(String password) {
-        waitForElement(passwordField).sendKeys(password);
+        waitForElement(passwordField,4).sendKeys(password);
     }
 
     public void clickContinue() {
@@ -41,11 +41,10 @@ public class LoginPage {
 
     public void clickLogin() {
         driver.findElement(loginButton).click();
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(titleText));
+        waitForElement(titleText, 10);
     }
 
     public String getTitleText() {
-        return waitForElement(titleText).getText();
+        return waitForElement(titleText,1).getText();
     }
 }
