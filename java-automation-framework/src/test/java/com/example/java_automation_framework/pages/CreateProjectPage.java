@@ -45,7 +45,7 @@ public class CreateProjectPage {
     }
 
     public void clickScrumCard() {
-        waitForElement(scrumButton, 5).click();
+        waitForElement(scrumButton, 15).click();
     }
 
     public void clickUseTemplate() {

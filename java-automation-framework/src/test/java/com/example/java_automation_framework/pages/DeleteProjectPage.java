@@ -42,7 +42,7 @@ public class DeleteProjectPage {
     }
 
     public void clickMoveToTrashButton() {
-        waitForElement(moveToTrashButton, 2).click();
+        waitForElement(moveToTrashButton, 15).click();
     }
 
     public void clickMoveButton() {
@@ -61,7 +61,7 @@ public class DeleteProjectPage {
        return waitForElement(flagsSuccess, 15).findElements(flagsSuccess);
     }
 
-    public void clickMoveActionByProjectName(String projectName) {
+    public void clickMoveActionsByProjectName(String projectName) {
         List<WebElement> rows = waitForElement(moveProjectRows, 25).findElements(moveProjectRows);
 
         for (WebElement row : rows) {

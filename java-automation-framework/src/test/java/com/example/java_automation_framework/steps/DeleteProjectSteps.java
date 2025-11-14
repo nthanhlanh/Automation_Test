@@ -28,7 +28,7 @@ public class DeleteProjectSteps {
     @When("Click on the Move to Trash menu item")
     public void click_on_move_to_trash_menu_item() {
         //        deleteProjectPage.enterSearchInput("RT");
-        deleteProjectPage.clickMoveActionByProjectName(SharedData.PROJECT_NAME);
+        deleteProjectPage.clickMoveActionsByProjectName(SharedData.PROJECT_NAME);
         deleteProjectPage.clickMoveToTrashButton();
     }
 

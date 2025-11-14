@@ -28,11 +28,11 @@ public class LoginPage {
     }
 
     public void enterUsername(String username) {
-        waitForElement(usernameField,4).sendKeys(username);
+        waitForElement(usernameField,15).sendKeys(username);
     }
 
     public void enterPassword(String password) {
-        waitForElement(passwordField,4).sendKeys(password);
+        waitForElement(passwordField,25).sendKeys(password);
     }
 
     public void clickContinue() {
