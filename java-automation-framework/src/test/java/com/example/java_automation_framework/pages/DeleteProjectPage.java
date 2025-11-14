@@ -18,6 +18,8 @@ public class DeleteProjectPage {
     private final By deleteNowButton = By.xpath("//button//div//span[normalize-space(text())='Delete now']");
     private final By deleteButton = By.xpath("//button//span[normalize-space(text())='Delete']");
     private final By searchInput = By.xpath("//input[@data-testid='searchfield']");
+    private final By successMessageSpaceMovedSpan = By.xpath("//div/h2/span[text()='Space successfully moved to trash']");
+    private final By successMessageSpaceDeletedSpan = By.xpath("//div/h2/span[text()='We’re deleting your space']");
     private final By moveProjectRows = By.xpath("//table[@class='css-wz0nuh']/tbody/tr");
     private final By inactiveProjectRows = By.xpath("//table[@data-testid='inactive-projects.dynamic-table-stateless--table']/tbody/tr");
     private final By flagsSuccess = By.xpath("//*[@data-testid='project-permanent-delete-modal.ui.flags.success-flag-icon-container']");
@@ -44,7 +46,7 @@ public class DeleteProjectPage {
     }
 
     public void clickMoveButton() {
-        waitForElement(moveButton, 6).click();
+        waitForElement(moveButton, 3).click();
     }
 
     public void clickDeleteNowButtonButton() {
@@ -83,6 +85,30 @@ public class DeleteProjectPage {
                 break;
             }
         }
+    }
+
+    public boolean isProjectPresentInTable(String projectName) {
+        List<WebElement> rows = waitForElement(moveProjectRows, 25).findElements(moveProjectRows);
+
+        for (WebElement row : rows) {
+            WebElement nameCell = row.findElement(By.xpath(".//td[2]//span"));
+            if (nameCell.getText().trim().equals(projectName)) {
+                WebElement actionBtn = row.findElement(By.xpath(".//td[6]//button"));
+                actionBtn.click();
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    public List<WebElement> getSuccessMessageSpaceMovedSpan(){
+        return waitForElement(successMessageSpaceMovedSpan, 3).findElements(successMessageSpaceMovedSpan);
+    }
+
+    public List<WebElement> getSuccessMessageSpaceDeletedSpan(){
+        return waitForElement(successMessageSpaceDeletedSpan, 3).findElements(successMessageSpaceDeletedSpan);
     }
 
 }

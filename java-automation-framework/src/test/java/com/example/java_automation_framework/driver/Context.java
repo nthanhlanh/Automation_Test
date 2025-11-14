@@ -17,4 +17,10 @@ public class Context {
             WebDriverFactory.quitDriver();
         }
     }
+
+    public void refreshDriver() {
+        if (driver != null) {
+            WebDriverFactory.refreshDriver();
+        }
+    }
 }

@@ -56,17 +56,18 @@ public class CreateProjectSteps {
     }
 
     @And("I enter into the Key field")
-    public void i_enter_into_the_key_field() {
+    public void i_enter_into_the_key_field() throws InterruptedException {
         createProjectPage.clickShowMoreButton();
         createProjectPage.enterProjectKey();
         createProjectPage.clickNextButton();
+        Thread.sleep(6000);
         context.getDriver().get("https://evizi-team-o8hcnrpk.atlassian.net/jira/projects");
     }
 
     @Then("I should see the new project created successfully")
-    public void i_should_see_the_new_project_created_successfully() {
-        createProjectPage.enterSearchInput(SharedData.PROJECT_NAME);
-        Assertions.assertTrue(createProjectPage.getProjectHeader(SharedData.PROJECT_NAME).getText()
-                .contains(SharedData.PROJECT_NAME));
+    public void i_should_see_the_new_project_created_successfully() throws InterruptedException {
+        Thread.sleep(2000);
+        context.refreshDriver();
+        Assertions.assertTrue(createProjectPage.isProjectPresentInTable(SharedData.PROJECT_NAME));
     }
 }

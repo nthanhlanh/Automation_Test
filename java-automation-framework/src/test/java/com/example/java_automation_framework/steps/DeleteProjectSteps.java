@@ -33,8 +33,13 @@ public class DeleteProjectSteps {
     }
 
     @And("Click on Move button")
-    public void click_on_move_button() {
+    public void click_on_move_button() throws InterruptedException {
         deleteProjectPage.clickMoveButton();
+        Assertions.assertFalse(deleteProjectPage.getSuccessMessageSpaceMovedSpan().isEmpty());
+
+        Thread.sleep(3000);
+        context.refreshDriver();
+        Assertions.assertFalse(deleteProjectPage.isProjectPresentInTable(SharedData.PROJECT_NAME));
     }
 
     @And("Open Jira trash page")
@@ -63,5 +68,6 @@ public class DeleteProjectSteps {
     public void the_project_should_be_permanently_deleted() {
         deleteProjectPage.getFlagsSuccess();
         Assertions.assertFalse(deleteProjectPage.getFlagsSuccess().isEmpty());
+        Assertions.assertFalse(deleteProjectPage.getSuccessMessageSpaceDeletedSpan().isEmpty());
     }
 }

@@ -24,7 +24,7 @@ public class CreateProjectPage {
     private final By showMoreButton = By.xpath("//button[.//span//div[text()='Show more']]");
     private final By keyInput = By.xpath("//input[@name='key-field-project-create']");
     private final By nextButton = By.xpath("//button[.//span[text()='Next']]");
-    private final By searchInput = By.xpath("//input[@data-testid='searchfield']");
+    private final By moveProjectRows = By.xpath("//table[@class='css-wz0nuh']/tbody/tr");
 
     public CreateProjectPage(WebDriver driver) {
         this.driver = driver;
@@ -73,23 +73,22 @@ public class CreateProjectPage {
     }
 
     public void clickNextButton() {
-        waitForElement(nextButton, 40).click();
+        waitForElement(nextButton, 60).click();
     }
 
-    public void enterSearchInput(String projectName) {
-        WebElement input = waitForElement(searchInput, 30);
-        input.clear();
-        input.sendKeys(projectName);
-    }
+    public boolean isProjectPresentInTable(String projectName) {
+        List<WebElement> rows = waitForElement(moveProjectRows, 25).findElements(moveProjectRows);
 
+        for (WebElement row : rows) {
+            WebElement nameCell = row.findElement(By.xpath(".//td[2]//span"));
+            if (nameCell.getText().trim().equals(projectName)) {
+                WebElement actionBtn = row.findElement(By.xpath(".//td[6]//button"));
+                actionBtn.click();
+                return true;
+            }
+        }
 
-    public WebElement getProjectHeader(String projectName){
-        By projectNameLocator = projectHeader(projectName);
-        return waitForElement(projectNameLocator, 25).findElement(projectNameLocator);
-    }
-
-    private By projectHeader(String projectName) {
-        return By.xpath("//td//div//a//span[contains(text(),'" + projectName + "')]");
+        return false;
     }
 
 }

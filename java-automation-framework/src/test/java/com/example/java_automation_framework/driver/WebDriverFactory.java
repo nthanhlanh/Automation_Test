@@ -21,4 +21,10 @@ public class WebDriverFactory {
             driver = null;
         }
     }
+
+    public static void refreshDriver() {
+        if (driver != null) {
+            driver.navigate().refresh();
+        }
+    }
 }
