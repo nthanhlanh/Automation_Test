@@ -1,4 +1,4 @@
-package com.example.java_automation_framework.utils;
+package com.example.java_automation_framework.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

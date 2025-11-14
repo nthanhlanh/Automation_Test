@@ -1,6 +1,5 @@
-package com.example.java_automation_framework.support;
+package com.example.java_automation_framework.driver;
 
-import com.example.java_automation_framework.utils.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 
 public class Context {

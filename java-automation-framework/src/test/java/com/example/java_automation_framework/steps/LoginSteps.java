@@ -1,8 +1,7 @@
 package com.example.java_automation_framework.steps;
 
 import com.example.java_automation_framework.pages.LoginPage;
-import com.example.java_automation_framework.support.Context;
-import io.cucumber.java.After;
+import com.example.java_automation_framework.driver.Context;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

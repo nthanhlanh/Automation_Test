@@ -1,7 +1,7 @@
 package com.example.java_automation_framework.steps.hooks;
 
 import com.example.java_automation_framework.pages.LoginPage;
-import com.example.java_automation_framework.support.Context;
+import com.example.java_automation_framework.driver.Context;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
