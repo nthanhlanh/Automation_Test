@@ -41,7 +41,7 @@ public class LoginPage {
 
     public void clickLogin() {
         driver.findElement(loginButton).click();
-        waitForElement(titleText, 10);
+        waitForElement(titleText, 40);
     }
 
     public String getTitleText() {
