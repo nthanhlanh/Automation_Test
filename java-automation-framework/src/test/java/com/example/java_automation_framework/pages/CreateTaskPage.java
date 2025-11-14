@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 
-public class CreateTask {
+public class CreateTaskPage {
     WebDriver driver;
 
     private final UUID uuid = UUID.randomUUID();
@@ -24,7 +24,7 @@ public class CreateTask {
 
 
 
-    public CreateTask(WebDriver driver) {
+    public CreateTaskPage(WebDriver driver) {
         this.driver = driver;
     }
 
