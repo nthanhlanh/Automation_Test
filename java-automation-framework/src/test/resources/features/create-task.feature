@@ -1,4 +1,4 @@
-@ui @createTask
+@ui @createTask @requiresLogin
 Feature: Task Management in Jira
 
   Scenario: The User creates a task

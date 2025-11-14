@@ -17,7 +17,7 @@ public class Hooks {
         context.getDriver();
     }
 
-    @Before(value = "@createTask", order = 1)
+    @Before(value = "@requiresLogin", order = 1)
     public void setUp() {
         LoginPage loginPage = new LoginPage(context.getDriver());
         loginPage.enterUsername("lanh.nguyen@evizi.com");
