@@ -44,8 +44,8 @@ public class LoginSteps {
         loginPage.clickLogin();
     }
 
-    @Then("{string} title is displayed")
-    public void title_is_displayed(String expectedTitle) {
+    @Then("The user sees the {string} title")
+    public void the_user_see_the_title(String expectedTitle) {
         String actualTitle = loginPage.getTitleText();
         assertEquals(actualTitle, expectedTitle);
     }

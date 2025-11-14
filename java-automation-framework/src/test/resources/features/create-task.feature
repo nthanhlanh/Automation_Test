@@ -1,5 +1,5 @@
 @ui @createTask
-Feature: Login to Jira feature
+Feature: Task Management in Jira
 
   Scenario: The User creates a task
     Given The user is on the dashboard

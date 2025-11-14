@@ -1,19 +1,17 @@
 package com.example.java_automation_framework.steps;
 
 import com.example.java_automation_framework.pages.CreateTask;
-import com.example.java_automation_framework.pages.LoginPage;
 import com.example.java_automation_framework.support.Context;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CreateTaskSteps {
+
+    private final String BASE_SUMMARY = "Automation Task";
 
     private final Context context;
     private CreateTask createTask;
@@ -34,7 +32,7 @@ public class CreateTaskSteps {
 
     @And("The user fills task details")
     public void the_user_fill_task_details() {
-        createTask.enterSummary("Automation Task "+ UUID.randomUUID());
+        createTask.enterSummary(BASE_SUMMARY);
         createTask.clickAssigneeMeButton();
     }
 
@@ -44,6 +42,8 @@ public class CreateTaskSteps {
     }
 
     @Then("The task is created successfully")
-    public void then_title_is_displayed() {
+    public void the_task_is_created_successfully() {
+        createTask.clickViewTask();
+        Assertions.assertFalse(createTask.getSummary(BASE_SUMMARY).isEmpty());
     }
 }
