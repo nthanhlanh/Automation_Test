@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Assertions;
 
 public class CreateTaskSteps {
 
-    private final String BASE_SUMMARY = "Automation Task";
+    private final String baseSummary = "Automation Task";
 
     private final Context context;
     private CreateTaskPage createTaskPage;
@@ -27,12 +27,13 @@ public class CreateTaskSteps {
 
     @When("The user clicks Create Task")
     public void the_user_clicks_task() {
+        createTaskPage.clickRowByProjectName("My Kanban Project");
         createTaskPage.clickCreate();
     }
 
     @And("The user fills task details")
     public void the_user_fill_task_details() {
-        createTaskPage.enterSummary(BASE_SUMMARY);
+        createTaskPage.enterSummary(baseSummary);
         createTaskPage.clickAssigneeMeButton();
     }
 
@@ -44,6 +45,6 @@ public class CreateTaskSteps {
     @Then("The task is created successfully")
     public void the_task_is_created_successfully() {
         createTaskPage.clickViewTask();
-        Assertions.assertFalse(createTaskPage.getSummary(BASE_SUMMARY).isEmpty());
+        Assertions.assertFalse(createTaskPage.getSummary(baseSummary).isEmpty());
     }
 }

@@ -10,7 +10,7 @@ public class WebDriverFactory {
         if (driver == null) {
             driver = new ChromeDriver();
             driver.manage().window().maximize();
-            driver.get("https://evizi-team-o8hcnrpk.atlassian.net/");
+            driver.get("https://id.atlassian.com/");
         }
         return driver;
     }

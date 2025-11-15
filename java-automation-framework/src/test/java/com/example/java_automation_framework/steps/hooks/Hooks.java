@@ -24,6 +24,8 @@ public class Hooks {
         loginPage.clickContinue();
         loginPage.enterPassword("ABC@1991");
         loginPage.clickLogin();
+        loginPage.waitForElement(loginPage.getTitleLocator(), 30);
+        loginPage.clickButtonOpenNewTab();
     }
 
     @After

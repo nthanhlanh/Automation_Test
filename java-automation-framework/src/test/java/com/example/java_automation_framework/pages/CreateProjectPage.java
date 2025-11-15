@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.UUID;
 
 public class CreateProjectPage {
     WebDriver driver;
@@ -24,20 +23,21 @@ public class CreateProjectPage {
     private final By showMoreButton = By.xpath("//button[.//span//div[text()='Show more']]");
     private final By keyInput = By.xpath("//input[@name='key-field-project-create']");
     private final By nextButton = By.xpath("//button[.//span[text()='Next']]");
-    private final By moveProjectRows = By.xpath("//table[@class='css-wz0nuh']/tbody/tr");
+    private final By projectTableRows = By.xpath("//table[@class='css-wz0nuh']/tbody/tr");
+    private final By headerBringYourTeamAlong = By.xpath("//h1[contains(text(), 'Bring your team along')]");
 
     public CreateProjectPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    private WebElement waitForElement(By locator, int timeoutInSeconds) {
+    public WebElement waitForElement(By locator, int timeoutInSeconds) {
         return new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     // Actions
     public void clickCreateProjectButton() {
-        waitForElement(createProjectButton, 4).click();
+        waitForElement(createProjectButton, 5).click();
     }
 
     public void clickSoftwareDevMenu() {
@@ -77,7 +77,7 @@ public class CreateProjectPage {
     }
 
     public boolean isProjectPresentInTable(String projectName) {
-        List<WebElement> rows = waitForElement(moveProjectRows, 25).findElements(moveProjectRows);
+        List<WebElement> rows = waitForElement(projectTableRows, 25).findElements(projectTableRows);
 
         for (WebElement row : rows) {
             WebElement nameCell = row.findElement(By.xpath(".//td[2]//span"));
@@ -89,6 +89,10 @@ public class CreateProjectPage {
         }
 
         return false;
+    }
+
+    public By getHeaderBringYourTeamAlongLocator(){
+        return headerBringYourTeamAlong;
     }
 
 }

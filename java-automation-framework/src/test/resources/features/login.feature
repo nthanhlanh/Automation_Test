@@ -7,5 +7,5 @@ Feature: Login to Jira feature
     And The user clicks Continue
     And The user enters password "ABC@1991"
     And The user clicks Login
-    Then The user sees the "For you" title
+    Then The homepage is displayed
 

@@ -21,7 +21,6 @@ public class DeleteProjectSteps {
 
     @Given("Open Jira projects page")
     public void open_jira_projects_page() {
-        context.getDriver().get("https://evizi-team-o8hcnrpk.atlassian.net/jira/projects");
         deleteProjectPage = new DeleteProjectPage(context.getDriver());
     }
 
@@ -36,15 +35,12 @@ public class DeleteProjectSteps {
     public void click_on_move_button() throws InterruptedException {
         deleteProjectPage.clickMoveButton();
         Assertions.assertFalse(deleteProjectPage.getSuccessMessageSpaceMovedSpan().isEmpty());
-
-        Thread.sleep(3000);
-        context.refreshDriver();
         Assertions.assertFalse(deleteProjectPage.isProjectPresentInTable(SharedData.PROJECT_NAME));
     }
 
     @And("Open Jira trash page")
     public void open_jira_trash_page() {
-        context.getDriver().get("https://evizi-team-o8hcnrpk.atlassian.net/jira/settings/projects/trash");
+        deleteProjectPage.clickGoToTrashButton();
     }
 
     @And("Click on More Actions button of the deleted project")

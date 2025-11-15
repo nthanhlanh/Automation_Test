@@ -21,7 +21,6 @@ public class CreateProjectSteps {
 
     @Given("I am on the Jira projects page {string}")
     public void the_user_is_on_the_jira_projects_page(String projectsPageUrl) {
-        context.getDriver().get("https://evizi-team-o8hcnrpk.atlassian.net/".concat(projectsPageUrl));
         createProjectPage = new CreateProjectPage(context.getDriver());
     }
 
@@ -56,17 +55,16 @@ public class CreateProjectSteps {
     }
 
     @And("I enter into the Key field")
-    public void i_enter_into_the_key_field() throws InterruptedException {
+    public void i_enter_into_the_key_field() {
         createProjectPage.clickShowMoreButton();
         createProjectPage.enterProjectKey();
         createProjectPage.clickNextButton();
-        Thread.sleep(6000);
+        createProjectPage.waitForElement(createProjectPage.getHeaderBringYourTeamAlongLocator(),40);
         context.getDriver().get("https://evizi-team-o8hcnrpk.atlassian.net/jira/projects");
     }
 
     @Then("I should see the new project created successfully")
-    public void i_should_see_the_new_project_created_successfully() throws InterruptedException {
-        Thread.sleep(2000);
+    public void i_should_see_the_new_project_created_successfully() {
         context.refreshDriver();
         Assertions.assertTrue(createProjectPage.isProjectPresentInTable(SharedData.PROJECT_NAME));
     }

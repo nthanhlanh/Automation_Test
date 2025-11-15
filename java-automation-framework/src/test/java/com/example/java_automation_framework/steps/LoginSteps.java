@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -43,9 +44,9 @@ public class LoginSteps {
         loginPage.clickLogin();
     }
 
-    @Then("The user sees the {string} title")
-    public void the_user_see_the_title(String expectedTitle) {
-        String actualTitle = loginPage.getTitleText();
-        assertEquals(actualTitle, expectedTitle);
+    @Then("The homepage is displayed")
+    public void the_homepage_is_displayed() {
+        System.out.println("Title Text: " + loginPage.getTitleText());
+        Assertions.assertFalse(loginPage.getTitleText().isEmpty());
     }
 }

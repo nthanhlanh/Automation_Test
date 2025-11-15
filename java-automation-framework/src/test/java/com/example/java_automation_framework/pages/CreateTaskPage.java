@@ -21,6 +21,7 @@ public class CreateTaskPage {
     private final By assigneeMeButton  = By.xpath("//button[@data-testid='issue-create-commons.ui.assignee-field.assing-to-me-button']");
     private final By submitButton = By.xpath("//button[@data-testid='issue-create.common.ui.footer.create-button']");
     private final By viewTaskButton = By.xpath("//div//a[span[text()='View Task']]");
+    private final By projectTableRows = By.xpath("//table[@class='css-wz0nuh']/tbody/tr");
 
 
 
@@ -50,12 +51,25 @@ public class CreateTaskPage {
     }
 
     public void clickViewTask() {
-        waitForElement(viewTaskButton,3).click();
+        waitForElement(viewTaskButton,15).click();
     }
 
     public List<WebElement> getSummary(String baseSummary){
         By uniqueSummaryLocator = getUniqueSummaryLocator(baseSummary);
-        return waitForElement(uniqueSummaryLocator, 5).findElements(uniqueSummaryLocator);
+        return waitForElement(uniqueSummaryLocator, 15).findElements(uniqueSummaryLocator);
+    }
+
+    public void clickRowByProjectName(String projectName) {
+        List<WebElement> rows = waitForElement(projectTableRows, 25).findElements(projectTableRows);
+
+        for (WebElement row : rows) {
+            WebElement nameCell = row.findElement(By.xpath(".//td[2]//span"));
+            if (nameCell.getText().trim().equals(projectName)) {
+                WebElement actionBtn = row.findElement(By.xpath(".//td[2]//a"));
+                actionBtn.click();
+                break;
+            }
+        }
     }
 
     private By getUniqueSummaryLocator(String baseSummary) {

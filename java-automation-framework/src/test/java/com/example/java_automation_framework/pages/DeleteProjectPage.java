@@ -21,16 +21,16 @@ public class DeleteProjectPage {
     private final By successMessageSpaceMovedSpan = By.xpath("//div/h2/span[text()='Space successfully moved to trash']");
     private final By successMessageSpaceDeletedSpan = By.xpath("//div/h2/span[text()='We’re deleting your space']");
     private final By moveProjectRows = By.xpath("//table[@class='css-wz0nuh']/tbody/tr");
-    private final By inactiveProjectRows = By.xpath("//table[@data-testid='inactive-projects.dynamic-table-stateless--table']/tbody/tr");
+    private final By projectTableRows = By.xpath("//table[@data-testid='inactive-projects.dynamic-table-stateless--table']/tbody/tr");
     private final By flagsSuccess = By.xpath("//*[@data-testid='project-permanent-delete-modal.ui.flags.success-flag-icon-container']");
-
+    private final By goToTrashButton = By.xpath("//span[text()='Go to trash']");
 
 
     public DeleteProjectPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    private WebElement waitForElement(By locator, int timeoutInSeconds) {
+    public WebElement waitForElement(By locator, int timeoutInSeconds) {
         return new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
@@ -47,6 +47,10 @@ public class DeleteProjectPage {
 
     public void clickMoveButton() {
         waitForElement(moveButton, 3).click();
+    }
+
+    public void clickGoToTrashButton() {
+        waitForElement(goToTrashButton, 3).click();
     }
 
     public void clickDeleteNowButtonButton() {
@@ -75,7 +79,7 @@ public class DeleteProjectPage {
     }
 
     public void clickDeleteActionByProjectName(String projectName) {
-        List<WebElement> rows = waitForElement(inactiveProjectRows, 25).findElements(inactiveProjectRows);
+        List<WebElement> rows = waitForElement(projectTableRows, 25).findElements(projectTableRows);
 
         for (WebElement row : rows) {
             WebElement nameCell = row.findElement(By.xpath(".//td[1]//span"));
