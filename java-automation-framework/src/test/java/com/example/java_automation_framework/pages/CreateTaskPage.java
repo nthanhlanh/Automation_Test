@@ -51,7 +51,7 @@ public class CreateTaskPage {
     }
 
     public void clickViewTask() {
-        waitForElement(viewTaskButton,25).click();
+        waitForElement(viewTaskButton,40).click();
     }
 
     public List<WebElement> getSummary(String baseSummary){
