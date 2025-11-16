@@ -25,6 +25,10 @@ public class CreateProjectPage {
     private final By nextButton = By.xpath("//button[.//span[text()='Next']]");
     private final By projectTableRows = By.xpath("//table[@class='css-wz0nuh']/tbody/tr");
     private final By headerBringYourTeamAlong = By.xpath("//h1[contains(text(), 'Bring your team along')]");
+    private final By skipButton = By.xpath("//button[.//span[text()='Skip']]");
+    private final By continueButton = By.xpath("//button[.//span[text()='Continue']]");
+    private final By moreSpacesButton = By.xpath("//button[.//span[text()='More spaces']]");
+    private final By viewAllSpacesLink = By.xpath("//a[.//span[text()='View all spaces']]");
 
     public CreateProjectPage(WebDriver driver) {
         this.driver = driver;
@@ -82,8 +86,6 @@ public class CreateProjectPage {
         for (WebElement row : rows) {
             WebElement nameCell = row.findElement(By.xpath(".//td[2]//span"));
             if (nameCell.getText().trim().equals(projectName)) {
-                WebElement actionBtn = row.findElement(By.xpath(".//td[6]//button"));
-                actionBtn.click();
                 return true;
             }
         }
@@ -93,6 +95,22 @@ public class CreateProjectPage {
 
     public By getHeaderBringYourTeamAlongLocator(){
         return headerBringYourTeamAlong;
+    }
+
+    public void clickSkipButton() {
+        waitForElement(skipButton, 4).click();
+    }
+
+    public void clickContinueButton() {
+        waitForElement(continueButton, 5).click();
+    }
+
+    public void clickMoreSpacesButton() {
+        waitForElement(moreSpacesButton, 25).click();
+    }
+
+    public void clickViewAllSpacesLink() {
+        waitForElement(viewAllSpacesLink, 4).click();
     }
 
 }

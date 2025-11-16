@@ -8,8 +8,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class LoginSteps {
 
     private final Context context;
@@ -46,7 +44,6 @@ public class LoginSteps {
 
     @Then("The homepage is displayed")
     public void the_homepage_is_displayed() {
-        System.out.println("Title Text: " + loginPage.getTitleText());
         Assertions.assertFalse(loginPage.getTitleText().isEmpty());
     }
 }

@@ -45,7 +45,7 @@ public class LoginPage {
 
     public void clickLogin() {
         driver.findElement(loginButton).click();
-        waitForElement(titleText, 40);
+        waitForElement(titleText, 60);
     }
 
     public String getTitleText() {
@@ -59,7 +59,7 @@ public class LoginPage {
     public void clickButtonOpenNewTab() {
         Set<String> originalHandles = driver.getWindowHandles();
 
-        driver.findElement(jiraLink).click();
+        waitForElement(jiraLink,15).click();
 
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(d -> d.getWindowHandles().size() > originalHandles.size());
@@ -71,6 +71,6 @@ public class LoginPage {
         driver.close();
 
         driver.switchTo().window(newTab);
-        waitForElement(createProjectButton, 10);
+        waitForElement(createProjectButton, 30);
     }
 }

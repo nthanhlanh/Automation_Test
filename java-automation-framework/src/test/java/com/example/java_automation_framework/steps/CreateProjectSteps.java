@@ -60,7 +60,10 @@ public class CreateProjectSteps {
         createProjectPage.enterProjectKey();
         createProjectPage.clickNextButton();
         createProjectPage.waitForElement(createProjectPage.getHeaderBringYourTeamAlongLocator(),40);
-        context.getDriver().get("https://evizi-team-o8hcnrpk.atlassian.net/jira/projects");
+        createProjectPage.clickSkipButton();
+        createProjectPage.clickContinueButton();
+        createProjectPage.clickMoreSpacesButton();
+        createProjectPage.clickViewAllSpacesLink();
     }
 
     @Then("I should see the new project created successfully")

@@ -26,16 +26,16 @@ public class DeleteProjectSteps {
 
     @When("Click on the Move to Trash menu item")
     public void click_on_move_to_trash_menu_item() {
-        //        deleteProjectPage.enterSearchInput("RT");
-        deleteProjectPage.clickMoveActionsByProjectName(SharedData.PROJECT_NAME);
+        deleteProjectPage.clickMoveToTrashActionForProject(SharedData.PROJECT_NAME);
         deleteProjectPage.clickMoveToTrashButton();
     }
 
     @And("Click on Move button")
-    public void click_on_move_button() throws InterruptedException {
+    public void click_on_move_button() {
         deleteProjectPage.clickMoveButton();
         Assertions.assertFalse(deleteProjectPage.getSuccessMessageSpaceMovedSpan().isEmpty());
-        Assertions.assertFalse(deleteProjectPage.isProjectPresentInTable(SharedData.PROJECT_NAME));
+        deleteProjectPage.enterSearchInput(SharedData.PROJECT_NAME);
+        Assertions.assertFalse(deleteProjectPage.getNoSpacesFoundH2().isEmpty());
     }
 
     @And("Open Jira trash page")
@@ -45,13 +45,12 @@ public class DeleteProjectSteps {
 
     @And("Click on More Actions button of the deleted project")
     public void click_on_more_actions_button_of_deleted_project() {
-        deleteProjectPage.enterSearchInput("");
+        deleteProjectPage.clickPermanentDeleteActionForProject(SharedData.PROJECT_NAME);
 
     }
 
     @And("Click on Delete now menu item")
     public void click_on_delete_now_menu_item() {
-        deleteProjectPage.clickDeleteActionByProjectName(SharedData.PROJECT_NAME);
         deleteProjectPage.clickDeleteNowButtonButton();
     }
 
