@@ -39,25 +39,30 @@ public class CreateProjectPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+    public WebElement waitForElementToBeClickable(By locator, int timeoutInSeconds) {
+        return new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds))
+                .until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
     // Actions
     public void clickCreateProjectButton() {
         waitForElement(createProjectButton, 5).click();
     }
 
     public void clickSoftwareDevMenu() {
-        waitForElement(softwareDevMenu, 6).click();
+        waitForElement(softwareDevMenu, 16).click();
     }
 
     public void clickScrumCard() {
-        waitForElement(scrumButton, 15).click();
+        waitForElementToBeClickable(scrumButton, 35).click();
     }
 
     public void clickUseTemplate() {
-        waitForElement(useTemplateButton, 1).click();
+        waitForElement(useTemplateButton, 10).click();
     }
 
     public void clickSelectTeamManaged() {
-        waitForElement(selectTeamManagedButton, 1).click();
+        waitForElement(selectTeamManagedButton, 10).click();
     }
 
     public void clickShowMoreButton() {
@@ -65,13 +70,13 @@ public class CreateProjectPage {
     }
 
     public void enterProjectName(String projectName) {
-        WebElement input = waitForElement(nameInput, 1);
+        WebElement input = waitForElement(nameInput, 10);
         input.clear();
         input.sendKeys(projectName);
     }
 
     public void enterProjectKey() {
-        WebElement input = waitForElement(keyInput, 1);
+        WebElement input = waitForElement(keyInput, 10);
         input.clear();
         input.sendKeys(RandomUtils.generateRandomProjectKey(8));
     }

@@ -1,5 +1,8 @@
 @ui @jiraProject @requiresLogin
-Feature: Create a new Jira project
+Feature: Manage Jira projects
+  In order to manage Jira projects efficiently
+  As a Jira user
+  I want to be able to create and delete projects
 
   Scenario: User creates a new team-managed Scrum project
     Given I am on the Jira projects page "/jira/projects"

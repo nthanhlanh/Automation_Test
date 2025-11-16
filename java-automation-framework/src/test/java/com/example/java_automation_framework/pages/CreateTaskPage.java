@@ -20,7 +20,7 @@ public class CreateTaskPage {
     private final By summaryInput = By.xpath("//input[@id='summary-field' and @name='summary']");
     private final By assigneeMeButton  = By.xpath("//button[@data-testid='issue-create-commons.ui.assignee-field.assing-to-me-button']");
     private final By submitButton = By.xpath("//button[@data-testid='issue-create.common.ui.footer.create-button']");
-    private final By viewTaskButton = By.xpath("//div//a[span[text()='View Task']]");
+    private final By viewTaskButton = By.xpath("//a[span[text()='View Task']]");
     private final By projectTableRows = By.xpath("//table[@class='css-wz0nuh']/tbody/tr");
 
 
@@ -35,7 +35,7 @@ public class CreateTaskPage {
     }
 
     public void enterSummary(String summary) {
-        waitForElement(summaryInput,4).sendKeys(getUniqueSummaryText(summary));
+        waitForElement(summaryInput,15).sendKeys(getUniqueSummaryText(summary));
     }
 
     public void clickCreate() {
@@ -51,7 +51,7 @@ public class CreateTaskPage {
     }
 
     public void clickViewTask() {
-        waitForElement(viewTaskButton,15).click();
+        waitForElement(viewTaskButton,25).click();
     }
 
     public List<WebElement> getSummary(String baseSummary){

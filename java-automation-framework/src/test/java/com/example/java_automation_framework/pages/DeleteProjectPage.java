@@ -36,6 +36,12 @@ public class DeleteProjectPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+    public boolean waitForElementDisappear(By locator, int timeoutInSeconds) {
+        return new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds))
+                .until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
+
     public void enterSearchInput(String key) {
         WebElement input = waitForElement(searchInput, 25);
         input.clear();
@@ -43,15 +49,15 @@ public class DeleteProjectPage {
     }
 
     public void clickMoveToTrashButton() {
-        waitForElement(moveToTrashButton, 15).click();
+        waitForElement(moveToTrashButton, 25).click();
     }
 
     public void clickMoveButton() {
-        waitForElement(moveButton, 15).click();
+        waitForElement(moveButton, 25).click();
     }
 
     public void clickGoToTrashButton() {
-        waitForElement(goToTrashButton, 15).click();
+        waitForElement(goToTrashButton, 25).click();
     }
 
     public void clickDeleteNowButtonButton() {
@@ -72,7 +78,7 @@ public class DeleteProjectPage {
         for (WebElement row : rows) {
             WebElement nameCell = row.findElement(By.xpath(".//td[2]//span"));
             if (nameCell.getText().trim().equals(projectName)) {
-                WebElement actionBtn = row.findElement(By.xpath(".//td[6]//button"));
+                WebElement actionBtn = row.findElement(By.xpath(".//td[6]//button[@aria-expanded='false']"));
                 actionBtn.click();
                 break;
             }
@@ -103,6 +109,10 @@ public class DeleteProjectPage {
 
     public List<WebElement> getSuccessMessageSpaceDeletedSpan(){
         return waitForElement(successMessageSpaceDeletedSpan, 10).findElements(successMessageSpaceDeletedSpan);
+    }
+
+    public void waitForMoveButtonDisappear() {
+        waitForElementDisappear(moveButton, 20);
     }
 
 }

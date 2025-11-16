@@ -34,6 +34,7 @@ public class DeleteProjectSteps {
     public void click_on_move_button() {
         deleteProjectPage.clickMoveButton();
         Assertions.assertFalse(deleteProjectPage.getSuccessMessageSpaceMovedSpan().isEmpty());
+        deleteProjectPage.waitForMoveButtonDisappear();
         deleteProjectPage.enterSearchInput(SharedData.PROJECT_NAME);
         Assertions.assertFalse(deleteProjectPage.getNoSpacesFoundH2().isEmpty());
     }
