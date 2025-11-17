@@ -46,11 +46,11 @@ public class CreateProjectPage {
 
     // Actions
     public void clickCreateProjectButton() {
-        waitForElement(createProjectButton, 5).click();
+        waitForElement(createProjectButton, 25).click();
     }
 
     public void clickSoftwareDevMenu() {
-        waitForElement(softwareDevMenu, 16).click();
+        waitForElement(softwareDevMenu, 25).click();
     }
 
     public void clickScrumCard() {
@@ -58,25 +58,25 @@ public class CreateProjectPage {
     }
 
     public void clickUseTemplate() {
-        waitForElement(useTemplateButton, 10).click();
+        waitForElement(useTemplateButton, 25).click();
     }
 
     public void clickSelectTeamManaged() {
-        waitForElement(selectTeamManagedButton, 10).click();
+        waitForElement(selectTeamManagedButton, 25).click();
     }
 
     public void clickShowMoreButton() {
-        waitForElement(showMoreButton, 1).click();
+        waitForElement(showMoreButton, 25).click();
     }
 
     public void enterProjectName(String projectName) {
-        WebElement input = waitForElement(nameInput, 10);
+        WebElement input = waitForElement(nameInput, 25);
         input.clear();
         input.sendKeys(projectName);
     }
 
     public void enterProjectKey() {
-        WebElement input = waitForElement(keyInput, 10);
+        WebElement input = waitForElement(keyInput, 25);
         input.clear();
         input.sendKeys(RandomUtils.generateRandomProjectKey(8));
     }
@@ -103,11 +103,11 @@ public class CreateProjectPage {
     }
 
     public void clickSkipButton() {
-        waitForElement(skipButton, 4).click();
+        waitForElement(skipButton, 25).click();
     }
 
     public void clickContinueButton() {
-        waitForElement(continueButton, 5).click();
+        waitForElement(continueButton, 25).click();
     }
 
     public void clickMoreSpacesButton() {
@@ -115,7 +115,7 @@ public class CreateProjectPage {
     }
 
     public void clickViewAllSpacesLink() {
-        waitForElement(viewAllSpacesLink, 4).click();
+        waitForElement(viewAllSpacesLink, 25).click();
     }
 
 }

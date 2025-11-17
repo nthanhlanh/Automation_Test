@@ -1,5 +1,7 @@
 package com.example.java_automation_framework.steps;
 
+import com.example.java_automation_framework.config.ConfigLoader;
+import com.example.java_automation_framework.config.TestConfig;
 import com.example.java_automation_framework.pages.CreateTaskPage;
 import com.example.java_automation_framework.driver.Context;
 import io.cucumber.java.en.And;
@@ -15,9 +17,11 @@ public class CreateTaskSteps {
 
     private final Context context;
     private CreateTaskPage createTaskPage;
+    private final TestConfig config;
 
     public CreateTaskSteps(Context context) {
         this.context = context;
+        this.config = ConfigLoader.getInstance().getConfig();
     }
 
     @Given("The user is on the dashboard")
@@ -27,7 +31,7 @@ public class CreateTaskSteps {
 
     @When("The user clicks Create Task")
     public void the_user_clicks_task() {
-        createTaskPage.clickRowByProjectName("My Kanban Project");
+        createTaskPage.clickRowByProjectName(config.getTaskProjectName());
         createTaskPage.clickCreate();
     }
 

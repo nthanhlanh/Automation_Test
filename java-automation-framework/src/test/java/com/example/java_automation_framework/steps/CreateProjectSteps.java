@@ -1,8 +1,9 @@
 package com.example.java_automation_framework.steps;
 
+import com.example.java_automation_framework.config.ConfigLoader;
+import com.example.java_automation_framework.config.TestConfig;
 import com.example.java_automation_framework.driver.Context;
 import com.example.java_automation_framework.pages.CreateProjectPage;
-import com.example.java_automation_framework.untils.SharedData;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,9 +15,11 @@ public class CreateProjectSteps {
 
     private final Context context;
     private CreateProjectPage createProjectPage;
+    private final TestConfig config;
 
     public CreateProjectSteps(Context context) {
         this.context = context;
+        this.config = ConfigLoader.getInstance().getConfig();
     }
 
     @Given("I am on the Jira projects page")
@@ -51,7 +54,7 @@ public class CreateProjectSteps {
 
     @And("I enter into the Name field")
     public void i_enter_into_the_name_field() {
-        createProjectPage.enterProjectName(SharedData.PROJECT_NAME);
+        createProjectPage.enterProjectName(config.getProjectName());
     }
 
     @And("I enter into the Key field")
@@ -69,6 +72,6 @@ public class CreateProjectSteps {
     @Then("I should see the new project created successfully")
     public void i_should_see_the_new_project_created_successfully() {
         context.refreshDriver();
-        Assertions.assertTrue(createProjectPage.isProjectPresentInTable(SharedData.PROJECT_NAME));
+        Assertions.assertTrue(createProjectPage.isProjectPresentInTable(config.getProjectName()));
     }
 }

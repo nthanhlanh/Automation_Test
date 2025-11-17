@@ -61,7 +61,7 @@ public class DeleteProjectPage {
     }
 
     public void clickDeleteNowButtonButton() {
-        waitForElement(deleteNowButton, 4).click();
+        waitForElement(deleteNowButton, 25).click();
     }
 
     public void clickDeleteButton() {
@@ -69,7 +69,7 @@ public class DeleteProjectPage {
     }
 
     public List<WebElement> getFlagsSuccess() {
-       return waitForElement(flagsSuccess, 15).findElements(flagsSuccess);
+       return waitForElement(flagsSuccess, 25).findElements(flagsSuccess);
     }
 
     public void clickMoveToTrashActionForProject(String projectName) {
@@ -99,20 +99,20 @@ public class DeleteProjectPage {
     }
 
     public List<WebElement> getNoSpacesFoundH2(){
-        return waitForElement(noSpacesFoundH2, 20).findElements(noSpacesFoundH2);
+        return waitForElement(noSpacesFoundH2, 25).findElements(noSpacesFoundH2);
     }
 
 
     public List<WebElement> getSuccessMessageSpaceMovedSpan(){
-        return waitForElement(successMessageSpaceMovedSpan, 10).findElements(successMessageSpaceMovedSpan);
+        return waitForElement(successMessageSpaceMovedSpan, 25).findElements(successMessageSpaceMovedSpan);
     }
 
     public List<WebElement> getSuccessMessageSpaceDeletedSpan(){
-        return waitForElement(successMessageSpaceDeletedSpan, 10).findElements(successMessageSpaceDeletedSpan);
+        return waitForElement(successMessageSpaceDeletedSpan, 25).findElements(successMessageSpaceDeletedSpan);
     }
 
     public void waitForMoveButtonDisappear() {
-        waitForElementDisappear(moveButton, 20);
+        waitForElementDisappear(moveButton, 25);
     }
 
 }

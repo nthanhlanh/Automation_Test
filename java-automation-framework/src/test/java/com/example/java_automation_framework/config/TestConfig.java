@@ -9,4 +9,6 @@ public class TestConfig {
     private String baseUrl;
     private String username;
     private String password;
+    private String projectName;
+    private String taskProjectName;
 }

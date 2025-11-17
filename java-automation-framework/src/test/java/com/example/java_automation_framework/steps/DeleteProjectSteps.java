@@ -1,8 +1,9 @@
 package com.example.java_automation_framework.steps;
 
+import com.example.java_automation_framework.config.ConfigLoader;
+import com.example.java_automation_framework.config.TestConfig;
 import com.example.java_automation_framework.driver.Context;
 import com.example.java_automation_framework.pages.DeleteProjectPage;
-import com.example.java_automation_framework.untils.SharedData;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,9 +15,11 @@ public class DeleteProjectSteps {
 
     private final Context context;
     private DeleteProjectPage deleteProjectPage;
+    private final TestConfig config;
 
     public DeleteProjectSteps(Context context) {
         this.context = context;
+        this.config = ConfigLoader.getInstance().getConfig();
     }
 
     @Given("Open Jira projects page")
@@ -26,7 +29,7 @@ public class DeleteProjectSteps {
 
     @When("Click on the Move to Trash menu item")
     public void click_on_move_to_trash_menu_item() {
-        deleteProjectPage.clickMoveToTrashActionForProject(SharedData.PROJECT_NAME);
+        deleteProjectPage.clickMoveToTrashActionForProject(config.getProjectName());
         deleteProjectPage.clickMoveToTrashButton();
     }
 
@@ -35,7 +38,7 @@ public class DeleteProjectSteps {
         deleteProjectPage.clickMoveButton();
         Assertions.assertFalse(deleteProjectPage.getSuccessMessageSpaceMovedSpan().isEmpty());
         deleteProjectPage.waitForMoveButtonDisappear();
-        deleteProjectPage.enterSearchInput(SharedData.PROJECT_NAME);
+        deleteProjectPage.enterSearchInput(config.getProjectName());
         Assertions.assertFalse(deleteProjectPage.getNoSpacesFoundH2().isEmpty());
     }
 
@@ -46,7 +49,7 @@ public class DeleteProjectSteps {
 
     @And("Click on More Actions button of the deleted project")
     public void click_on_more_actions_button_of_deleted_project() {
-        deleteProjectPage.clickPermanentDeleteActionForProject(SharedData.PROJECT_NAME);
+        deleteProjectPage.clickPermanentDeleteActionForProject(config.getProjectName());
 
     }
 
