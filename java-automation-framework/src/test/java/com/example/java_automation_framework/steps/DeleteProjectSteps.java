@@ -1,7 +1,7 @@
 package com.example.java_automation_framework.steps;
 
 import com.example.java_automation_framework.config.ConfigLoader;
-import com.example.java_automation_framework.config.TestConfig;
+import com.example.java_automation_framework.config.AppConfig;
 import com.example.java_automation_framework.driver.Context;
 import com.example.java_automation_framework.pages.DeleteProjectPage;
 import io.cucumber.java.en.And;
@@ -15,7 +15,7 @@ public class DeleteProjectSteps {
 
     private final Context context;
     private DeleteProjectPage deleteProjectPage;
-    private final TestConfig config;
+    private final AppConfig config;
 
     public DeleteProjectSteps(Context context) {
         this.context = context;

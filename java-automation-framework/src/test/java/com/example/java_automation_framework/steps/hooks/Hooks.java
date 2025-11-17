@@ -1,7 +1,7 @@
 package com.example.java_automation_framework.steps.hooks;
 
 import com.example.java_automation_framework.config.ConfigLoader;
-import com.example.java_automation_framework.config.TestConfig;
+import com.example.java_automation_framework.config.AppConfig;
 import com.example.java_automation_framework.pages.LoginPage;
 import com.example.java_automation_framework.driver.Context;
 import io.cucumber.java.After;
@@ -21,7 +21,7 @@ public class Hooks {
 
     @Before(value = "@requiresLogin", order = 1)
     public void setUp() {
-        TestConfig config = ConfigLoader.getInstance().getConfig();
+        AppConfig config = ConfigLoader.getInstance().getConfig();
         LoginPage loginPage = new LoginPage(context.getDriver());
         loginPage.enterUsername(config.getUsername());
         loginPage.clickContinue();

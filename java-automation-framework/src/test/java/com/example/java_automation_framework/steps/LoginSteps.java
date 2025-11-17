@@ -1,7 +1,7 @@
 package com.example.java_automation_framework.steps;
 
 import com.example.java_automation_framework.config.ConfigLoader;
-import com.example.java_automation_framework.config.TestConfig;
+import com.example.java_automation_framework.config.AppConfig;
 import com.example.java_automation_framework.pages.LoginPage;
 import com.example.java_automation_framework.driver.Context;
 import io.cucumber.java.en.And;
@@ -14,7 +14,7 @@ public class LoginSteps {
 
     private final Context context;
     private LoginPage loginPage;
-    private final TestConfig config;
+    private final AppConfig config;
 
     public LoginSteps(Context context) {
         this.context = context;

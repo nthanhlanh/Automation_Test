@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class TestConfig {
+public class AppConfig {
     private String baseUrl;
     private String username;
     private String password;

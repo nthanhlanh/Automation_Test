@@ -1,7 +1,7 @@
 package com.example.java_automation_framework.steps;
 
 import com.example.java_automation_framework.config.ConfigLoader;
-import com.example.java_automation_framework.config.TestConfig;
+import com.example.java_automation_framework.config.AppConfig;
 import com.example.java_automation_framework.pages.CreateTaskPage;
 import com.example.java_automation_framework.driver.Context;
 import io.cucumber.java.en.And;
@@ -17,7 +17,7 @@ public class CreateTaskSteps {
 
     private final Context context;
     private CreateTaskPage createTaskPage;
-    private final TestConfig config;
+    private final AppConfig config;
 
     public CreateTaskSteps(Context context) {
         this.context = context;
