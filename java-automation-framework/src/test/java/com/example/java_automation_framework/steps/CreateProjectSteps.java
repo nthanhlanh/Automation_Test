@@ -19,8 +19,8 @@ public class CreateProjectSteps {
         this.context = context;
     }
 
-    @Given("I am on the Jira projects page {string}")
-    public void the_user_is_on_the_jira_projects_page(String projectsPageUrl) {
+    @Given("I am on the Jira projects page")
+    public void the_user_is_on_the_jira_projects_page() {
         createProjectPage = new CreateProjectPage(context.getDriver());
     }
 

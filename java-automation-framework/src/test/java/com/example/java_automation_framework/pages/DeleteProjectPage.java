@@ -36,8 +36,8 @@ public class DeleteProjectPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public boolean waitForElementDisappear(By locator, int timeoutInSeconds) {
-        return new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds))
+    public void waitForElementDisappear(By locator, int timeoutInSeconds) {
+        new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds))
                 .until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 

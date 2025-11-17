@@ -1,5 +1,7 @@
 package com.example.java_automation_framework.steps;
 
+import com.example.java_automation_framework.config.ConfigLoader;
+import com.example.java_automation_framework.config.TestConfig;
 import com.example.java_automation_framework.pages.LoginPage;
 import com.example.java_automation_framework.driver.Context;
 import io.cucumber.java.en.And;
@@ -12,9 +14,11 @@ public class LoginSteps {
 
     private final Context context;
     private LoginPage loginPage;
+    private final TestConfig config;
 
     public LoginSteps(Context context) {
         this.context = context;
+        this.config = ConfigLoader.getInstance().getConfig();
     }
 
     @Given("The user is on the login page")
@@ -22,9 +26,9 @@ public class LoginSteps {
         loginPage = new LoginPage(context.getDriver());
     }
 
-    @When("The user enters username {string}")
-    public void the_user_enters_username(String userName) {
-        loginPage.enterUsername(userName);
+    @When("The user enters username")
+    public void the_user_enters_username() {
+        loginPage.enterUsername(config.getUsername());
     }
 
     @And("The user clicks Continue")
@@ -32,9 +36,9 @@ public class LoginSteps {
         loginPage.clickContinue();
     }
 
-    @And("The user enters password {string}")
-    public void the_user_enters_password(String password) {
-        loginPage.enterPassword(password);
+    @And("The user enters password")
+    public void the_user_enters_password() {
+        loginPage.enterPassword(config.getPassword());
     }
 
     @And("The user clicks Login")

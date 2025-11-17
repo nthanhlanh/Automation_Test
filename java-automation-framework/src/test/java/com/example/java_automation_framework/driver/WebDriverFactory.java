@@ -1,5 +1,7 @@
 package com.example.java_automation_framework.driver;
 
+import com.example.java_automation_framework.config.ConfigLoader;
+import com.example.java_automation_framework.config.TestConfig;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -8,9 +10,10 @@ public class WebDriverFactory {
 
     public static WebDriver getDriver() {
         if (driver == null) {
+            TestConfig config = ConfigLoader.getInstance().getConfig();
             driver = new ChromeDriver();
             driver.manage().window().maximize();
-            driver.get("https://id.atlassian.com/");
+            driver.get(config.getBaseUrl());
         }
         return driver;
     }

@@ -5,7 +5,7 @@ Feature: Manage Jira projects
   I want to be able to create and delete projects
 
   Scenario: User creates a new team-managed Scrum project
-    Given I am on the Jira projects page "/jira/projects"
+    Given I am on the Jira projects page
     When I click on Create project button
     And I click on Software development menu item
     And I click on Scrum card
